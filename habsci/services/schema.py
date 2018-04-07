@@ -7,7 +7,7 @@ class ServiceType(DjangoObjectType):
         model = Service
 
 
-class Query(object):
+class Query():
     service = graphene.Field(ServiceType,
                               id=graphene.Int(),
                               name=graphene.String())
@@ -18,7 +18,7 @@ class Query(object):
         name = kwargs.get('name')
 
         if id is not None:
-            return ServiceType.objects.get(pk=id)
+            return ServiceType.objects.get(id=id)
 
         if name is not None:
             return ServiceType.objects.get(name=name)

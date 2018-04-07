@@ -1,4 +1,5 @@
 graphene
 graphene-django
 graphql-core
-psycopg2
+psycopg2-binary
+django-cors-headers
