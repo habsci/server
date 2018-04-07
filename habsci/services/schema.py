@@ -7,7 +7,7 @@ class ServiceType(DjangoObjectType):
         model = Service
 
 
-class Query():
+class ServiceQuery():
     service = graphene.Field(ServiceType,
                               id=graphene.Int(),
                               name=graphene.String())
