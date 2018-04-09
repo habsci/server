@@ -2,9 +2,12 @@ import graphene
 from graphene_django.types import DjangoObjectType
 from habsci.services.schema import ServiceType, ServiceQuery
 from habsci.services.mutations import CreateService
+from habsci.users.schema import UserType, UserQuery
 
 
 class Query(graphene.ObjectType):
+    all_users = graphene.List(UserType)
+    resolve_all_users = UserQuery.resolve_all_users
     all_services = graphene.List(ServiceType)
     resolve_all_services = ServiceQuery.resolve_all_services
     # This class will inherit from multiple Queries

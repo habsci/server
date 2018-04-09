@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'graphene_django',
     'habsci.services',
+    'habsci.users',
 ]
 
 MIDDLEWARE = [
