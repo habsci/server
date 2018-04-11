@@ -3,3 +3,5 @@ graphene-django
 graphql-core
 psycopg2-binary
 django-cors-headers
+pyyaml
+django-pipeline
