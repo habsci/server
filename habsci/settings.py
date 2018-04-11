@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'habsci.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd2qhuik3fgakpv',
-        'USER': 'lqprwmltlopsvh',
-        'PASSWORD': '46af57e463b5bec3160f060a14961b6ab719887d9a152e2785b20fb7bab01ab7',
-        'HOST': 'ec2-54-163-240-54.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['DATABASE_USERNAME'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        'HOST': os.environ['DATABASE_URL'],
+        'PORT': os.environ['DATABASE_PORT'],
     }
 }
 
