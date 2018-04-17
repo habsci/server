@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -83,11 +84,16 @@ WSGI_APPLICATION = 'habsci.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['DATABASE_NAME'],
-        'USER': os.environ['DATABASE_USERNAME'],
-        'PASSWORD': os.environ['DATABASE_PASSWORD'],
-        'HOST': os.environ['DATABASE_URL'],
-        'PORT': os.environ['DATABASE_PORT'],
+        'NAME': 'd2qhuik3fgakpv',
+        'USER': 'lqprwmltlopsvh',
+        'PASSWORD': '46af57e463b5bec3160f060a14961b6ab719887d9a152e2785b20fb7bab01ab7',
+        'HOST': 'ec2-54-163-240-54.compute-1.amazonaws.com',
+        'PORT': '5432',
+        # 'NAME': os.environ['DATABASE_NAME'],
+        # 'USER': os.environ['DATABASE_USERNAME'],
+        # 'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        # 'HOST': os.environ['DATABASE_URL'],
+        # 'PORT': os.environ['DATABASE_PORT'],
     }
 }
 
@@ -132,4 +138,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-django_heroku.settings(locals())
+
+# Configure Django App for Heroku.
+# django_heroku.settings(locals())
