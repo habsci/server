@@ -1,6 +1,0 @@
-ENVIRONMENT: 'development'
-DATABASE_NAME: 'habsci_development'
-DATABASE_USERNAME: 'jeffreygoldsmith'
-DATABASE_PASSWORD: ''
-DATABASE_URL: 'localhost'
-DATABASE_PORT: '5432'
