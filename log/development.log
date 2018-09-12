@@ -1898,3 +1898,538 @@ Migrating to CreateSensorData (20180910195911)
   ↳ bin/rails:4
   [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
   ↳ bin/rails:4
+Started GET "/graphiql" for 127.0.0.1 at 2018-09-12 13:28:56 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by GraphiQL::Rails::EditorsController#show as HTML
+  Parameters: {"graphql_path"=>"/graphql"}
+  Rendering /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphiql-rails-1.4.11/app/views/graphiql/rails/editors/show.html.erb
+  Rendered /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphiql-rails-1.4.11/app/views/graphiql/rails/editors/show.html.erb (234.9ms)
+Completed 200 OK in 257ms (Views: 246.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-09-12 13:28:56 -0400
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+Completed 200 OK in 83ms (Views: 18.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-09-12 13:29:00 -0400
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"query {\n  sensorData {\n    temperature\n    humidity\n  }\n}", "variables"=>nil, "graphql"=>{"query"=>"query {\n  sensorData {\n    temperature\n    humidity\n  }\n}", "variables"=>nil}}
+        Failed to implement Query.sensorData, tried:
+
+        - `Types::QueryType#sensor_data`, which did not exist
+        - `NilClass#sensor_data`, which did not exist
+        - Looking up hash key `:sensor_data` or `"sensor_data"` on ``, but it wasn't a Hash
+
+        To implement this field, define one of the methods above (and check for typos)
+
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/field.rb:380:in `resolve_field_method'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/member/has_fields.rb:123:in `sensor_data'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/field.rb:438:in `public_send'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/field.rb:438:in `public_send_field'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/field.rb:346:in `block in resolve_field'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema.rb:1013:in `after_lazy'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/field.rb:333:in `resolve_field'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/member/instrumentation.rb:74:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/member/instrumentation.rb:74:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/field.rb:248:in `resolve'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:295:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/middleware_chain.rb:49:in `invoke_core'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/middleware_chain.rb:38:in `invoke'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:108:in `block in resolve_field'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:62:in `block in trace'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:76:in `call_tracers'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:62:in `trace'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:107:in `resolve_field'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:71:in `block in resolve_selection'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:64:in `each'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:64:in `resolve_selection'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:36:in `block in resolve_root_selection'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:62:in `block in trace'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:76:in `call_tracers'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:62:in `trace'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:32:in `resolve_root_selection'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:108:in `begin_query'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:81:in `block in run_as_multiplex'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:80:in `map'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:80:in `run_as_multiplex'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:69:in `block (2 levels) in run_queries'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:174:in `block in instrument_and_analyze'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:29:in `block (2 levels) in apply_instrumenters'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:46:in `block (2 levels) in each_query_call_hooks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:41:in `each_query_call_hooks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:45:in `block in each_query_call_hooks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:70:in `call_hooks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:44:in `each_query_call_hooks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:27:in `block in apply_instrumenters'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:70:in `call_hooks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:26:in `apply_instrumenters'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:166:in `instrument_and_analyze'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:68:in `block in run_queries'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:62:in `block in trace'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:76:in `call_tracers'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:62:in `trace'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:58:in `run_queries'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:48:in `run_all'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema.rb:342:in `block in multiplex'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema.rb:1057:in `with_definition_error_check'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema.rb:341:in `multiplex'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema.rb:318:in `execute'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/controllers/graphql_controller.rb:10:in `execute'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/abstract_controller/base.rb:194:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/rendering.rb:30:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:132:in `run_callbacks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/abstract_controller/callbacks.rb:41:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/rescue.rb:22:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/notifications.rb:168:in `block in instrument'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/notifications.rb:168:in `instrument'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activerecord-5.2.1/lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/abstract_controller/base.rb:134:in `process'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionview-5.2.1/lib/action_view/rendering.rb:32:in `process'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal.rb:191:in `dispatch'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal.rb:252:in `dispatch'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/routing/route_set.rb:34:in `serve'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/journey/router.rb:52:in `block in serve'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/journey/router.rb:35:in `each'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/journey/router.rb:35:in `serve'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/routing/route_set.rb:840:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/conditional_get.rb:38:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/cookies.rb:670:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activerecord-5.2.1/lib/active_record/migration.rb:559:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:98:in `run_callbacks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/executor.rb:14:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/web-console-3.7.0/lib/web_console/middleware.rb:135:in `call_app'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/web-console-3.7.0/lib/web_console/middleware.rb:30:in `block in call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/web-console-3.7.0/lib/web_console/middleware.rb:20:in `catch'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/web-console-3.7.0/lib/web_console/middleware.rb:20:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/tagged_logging.rb:71:in `tagged'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/executor.rb:14:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/static.rb:127:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/configuration.rb:225:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/server.rb:658:in `handle_request'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/server.rb:472:in `process_client'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/server.rb:332:in `block in run'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Completed 500 Internal Server Error in 7ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:8
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email") VALUES ($1, $2) RETURNING "id"[0m  [["full_name", "Jeffrey"], ["email", "jeffgold12@gmail.com"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mSensorData Create (0.4ms)[0m  [1m[32mINSERT INTO "sensor_data" ("temperature", "humidity") VALUES ($1, $2) RETURNING "id"[0m  [["temperature", 5.5], ["humidity", 5.5]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2976547590835962570)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2018-09-12 17:32:35.149557"], ["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2976547590835962570)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/graphiql" for 127.0.0.1 at 2018-09-12 13:41:00 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by GraphiQL::Rails::EditorsController#show as HTML
+  Parameters: {"graphql_path"=>"/graphql"}
+  Rendering /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphiql-rails-1.4.11/app/views/graphiql/rails/editors/show.html.erb
+  Rendered /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphiql-rails-1.4.11/app/views/graphiql/rails/editors/show.html.erb (235.6ms)
+Completed 200 OK in 260ms (Views: 248.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-09-12 13:41:00 -0400
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+The new name override method is `graphql_name`, not `name`. Usage: graphql_name "SensorData"
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/member/base_dsl_methods.rb:31:in `name'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/graphql/types/sensor_data_type.rb:3:in `<class:SensorDataType>'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/graphql/types/sensor_data_type.rb:2:in `<module:Types>'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/graphql/types/sensor_data_type.rb:1:in `<main>'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:369:in `block in require_or_load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:37:in `block in load_interlock'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies/interlock.rb:14:in `block in loading'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/concurrency/share_lock.rb:151:in `exclusive'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies/interlock.rb:13:in `loading'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:37:in `load_interlock'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:352:in `require_or_load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:506:in `load_missing_constant'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/active_support.rb:43:in `load_missing_constant'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:193:in `const_missing'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/graphql/mutations/sensor_data_create.rb:7:in `<class:SensorDataCreate>'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/graphql/mutations/sensor_data_create.rb:2:in `<module:Mutations>'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/graphql/mutations/sensor_data_create.rb:1:in `<main>'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:369:in `block in require_or_load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:37:in `block in load_interlock'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies/interlock.rb:14:in `block in loading'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/concurrency/share_lock.rb:151:in `exclusive'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies/interlock.rb:13:in `loading'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:37:in `load_interlock'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:352:in `require_or_load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:506:in `load_missing_constant'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/active_support.rb:43:in `load_missing_constant'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:193:in `const_missing'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/graphql/types/mutation_type.rb:4:in `<class:MutationType>'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/graphql/types/mutation_type.rb:2:in `<module:Types>'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/graphql/types/mutation_type.rb:1:in `<main>'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:369:in `block in require_or_load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:37:in `block in load_interlock'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies/interlock.rb:14:in `block in loading'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/concurrency/share_lock.rb:151:in `exclusive'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies/interlock.rb:13:in `loading'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:37:in `load_interlock'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:352:in `require_or_load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:506:in `load_missing_constant'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/active_support.rb:43:in `load_missing_constant'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:193:in `const_missing'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/graphql/server_schema.rb:2:in `<class:ServerSchema>'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/graphql/server_schema.rb:1:in `<main>'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:50:in `load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:472:in `block in load_file'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:657:in `new_constants_in'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:471:in `load_file'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:369:in `block in require_or_load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:37:in `block in load_interlock'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies/interlock.rb:14:in `block in loading'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/concurrency/share_lock.rb:151:in `exclusive'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies/interlock.rb:13:in `loading'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:37:in `load_interlock'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:352:in `require_or_load'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:506:in `load_missing_constant'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/active_support.rb:43:in `load_missing_constant'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:193:in `const_missing'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:538:in `load_missing_constant'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/bootsnap-1.3.1/lib/bootsnap/load_path_cache/core_ext/active_support.rb:43:in `load_missing_constant'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/dependencies.rb:193:in `const_missing'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/controllers/graphql_controller.rb:10:in `execute'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/abstract_controller/base.rb:194:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/rendering.rb:30:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:132:in `run_callbacks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/abstract_controller/callbacks.rb:41:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/rescue.rb:22:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/notifications.rb:168:in `block in instrument'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/notifications.rb:168:in `instrument'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activerecord-5.2.1/lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/abstract_controller/base.rb:134:in `process'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionview-5.2.1/lib/action_view/rendering.rb:32:in `process'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal.rb:191:in `dispatch'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal.rb:252:in `dispatch'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/routing/route_set.rb:34:in `serve'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/journey/router.rb:52:in `block in serve'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/journey/router.rb:35:in `each'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/journey/router.rb:35:in `serve'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/routing/route_set.rb:840:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/conditional_get.rb:38:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/cookies.rb:670:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activerecord-5.2.1/lib/active_record/migration.rb:559:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:98:in `run_callbacks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/executor.rb:14:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/web-console-3.7.0/lib/web_console/middleware.rb:135:in `call_app'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/web-console-3.7.0/lib/web_console/middleware.rb:30:in `block in call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/web-console-3.7.0/lib/web_console/middleware.rb:20:in `catch'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/web-console-3.7.0/lib/web_console/middleware.rb:20:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/tagged_logging.rb:71:in `tagged'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/executor.rb:14:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/static.rb:127:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/configuration.rb:225:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/server.rb:658:in `handle_request'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/server.rb:472:in `process_client'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/server.rb:332:in `block in run'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Completed 500 Internal Server Error in 12ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/graphiql" for 127.0.0.1 at 2018-09-12 13:41:33 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by GraphiQL::Rails::EditorsController#show as HTML
+  Parameters: {"graphql_path"=>"/graphql"}
+  Rendering /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphiql-rails-1.4.11/app/views/graphiql/rails/editors/show.html.erb
+  Rendered /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphiql-rails-1.4.11/app/views/graphiql/rails/editors/show.html.erb (220.2ms)
+Completed 200 OK in 245ms (Views: 234.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-09-12 13:41:33 -0400
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+Completed 200 OK in 95ms (Views: 15.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-09-12 13:41:42 -0400
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"query {\n  allSensorData {\n    temperature\n    humidity\n  }\n}", "variables"=>nil, "graphql"=>{"query"=>"query {\n  allSensorData {\n    temperature\n    humidity\n  }\n}", "variables"=>nil}}
+        Failed to implement SensorData.temperature, tried:
+
+        - `Types::SensorDataType#temperature`, which did not exist
+        - `SensorData::ActiveRecord_Relation#temperature`, which did not exist
+        - Looking up hash key `:temperature` or `"temperature"` on `#<SensorData::ActiveRecord_Relation:0x00007fdd51be72c0>`, but it wasn't a Hash
+
+        To implement this field, define one of the methods above (and check for typos)
+
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/field.rb:380:in `resolve_field_method'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/member/has_fields.rb:123:in `temperature'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/field.rb:438:in `public_send'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/field.rb:438:in `public_send_field'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/field.rb:346:in `block in resolve_field'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema.rb:1013:in `after_lazy'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/field.rb:333:in `resolve_field'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/field.rb:248:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/field.rb:248:in `resolve'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:295:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/middleware_chain.rb:49:in `invoke_core'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema/middleware_chain.rb:38:in `invoke'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:108:in `block in resolve_field'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:62:in `block in trace'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:76:in `call_tracers'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:62:in `trace'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:107:in `resolve_field'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:71:in `block in resolve_selection'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:64:in `each'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:64:in `resolve_selection'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:260:in `resolve_value'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:189:in `continue_resolve_field'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:160:in `continue_or_wait'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:133:in `resolve_field'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:71:in `block in resolve_selection'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:64:in `each'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:64:in `resolve_selection'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:36:in `block in resolve_root_selection'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:62:in `block in trace'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:76:in `call_tracers'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:62:in `trace'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/execute.rb:32:in `resolve_root_selection'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:108:in `begin_query'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:81:in `block in run_as_multiplex'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:80:in `map'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:80:in `run_as_multiplex'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:69:in `block (2 levels) in run_queries'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:174:in `block in instrument_and_analyze'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:29:in `block (2 levels) in apply_instrumenters'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:46:in `block (2 levels) in each_query_call_hooks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:41:in `each_query_call_hooks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:45:in `block in each_query_call_hooks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:70:in `call_hooks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:44:in `each_query_call_hooks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:27:in `block in apply_instrumenters'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:70:in `call_hooks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/instrumentation.rb:26:in `apply_instrumenters'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:166:in `instrument_and_analyze'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:68:in `block in run_queries'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:62:in `block in trace'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:76:in `call_tracers'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/tracing.rb:62:in `trace'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:58:in `run_queries'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/execution/multiplex.rb:48:in `run_all'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema.rb:342:in `block in multiplex'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema.rb:1057:in `with_definition_error_check'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema.rb:341:in `multiplex'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphql-1.8.8/lib/graphql/schema.rb:318:in `execute'
+/Users/jeffreygoldsmith/Desktop/github/habsci/server/app/controllers/graphql_controller.rb:10:in `execute'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/abstract_controller/base.rb:194:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/rendering.rb:30:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:132:in `run_callbacks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/abstract_controller/callbacks.rb:41:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/rescue.rb:22:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/notifications.rb:168:in `block in instrument'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/notifications.rb:168:in `instrument'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activerecord-5.2.1/lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/abstract_controller/base.rb:134:in `process'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionview-5.2.1/lib/action_view/rendering.rb:32:in `process'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal.rb:191:in `dispatch'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_controller/metal.rb:252:in `dispatch'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/routing/route_set.rb:34:in `serve'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/journey/router.rb:52:in `block in serve'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/journey/router.rb:35:in `each'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/journey/router.rb:35:in `serve'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/routing/route_set.rb:840:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/conditional_get.rb:38:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/cookies.rb:670:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activerecord-5.2.1/lib/active_record/migration.rb:559:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/callbacks.rb:98:in `run_callbacks'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/executor.rb:14:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/web-console-3.7.0/lib/web_console/middleware.rb:135:in `call_app'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/web-console-3.7.0/lib/web_console/middleware.rb:30:in `block in call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/web-console-3.7.0/lib/web_console/middleware.rb:20:in `catch'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/web-console-3.7.0/lib/web_console/middleware.rb:20:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/tagged_logging.rb:28:in `tagged'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/tagged_logging.rb:71:in `tagged'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activesupport-5.2.1/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/executor.rb:14:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/actionpack-5.2.1/lib/action_dispatch/middleware/static.rb:127:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/configuration.rb:225:in `call'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/server.rb:658:in `handle_request'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/server.rb:472:in `process_client'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/server.rb:332:in `block in run'
+/Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/puma-3.12.0/lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Completed 500 Internal Server Error in 13ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/graphiql" for 127.0.0.1 at 2018-09-12 13:42:42 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by GraphiQL::Rails::EditorsController#show as HTML
+  Parameters: {"graphql_path"=>"/graphql"}
+  Rendering /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphiql-rails-1.4.11/app/views/graphiql/rails/editors/show.html.erb
+  Rendered /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphiql-rails-1.4.11/app/views/graphiql/rails/editors/show.html.erb (241.6ms)
+Completed 200 OK in 265ms (Views: 254.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-09-12 13:42:43 -0400
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+Completed 200 OK in 82ms (Views: 19.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-09-12 13:42:44 -0400
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"query {\n  allSensorData {\n    temperature\n    humidity\n  }\n}", "variables"=>nil, "graphql"=>{"query"=>"query {\n  allSensorData {\n    temperature\n    humidity\n  }\n}", "variables"=>nil}}
+  [1m[36mSensorData Load (0.8ms)[0m  [1m[34mSELECT "sensor_data".* FROM "sensor_data"[0m
+  ↳ app/controllers/graphql_controller.rb:10
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/graphiql" for 127.0.0.1 at 2018-09-12 13:44:22 -0400
+Processing by GraphiQL::Rails::EditorsController#show as HTML
+  Parameters: {"graphql_path"=>"/graphql"}
+  Rendering /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphiql-rails-1.4.11/app/views/graphiql/rails/editors/show.html.erb
+  Rendered /Users/jeffreygoldsmith/.gem/ruby/2.5.1/gems/graphiql-rails-1.4.11/app/views/graphiql/rails/editors/show.html.erb (7.3ms)
+Completed 200 OK in 21ms (Views: 16.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-09-12 13:44:22 -0400
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n", "graphql"=>{"query"=>"\n  query IntrospectionQuery {\n    __schema {\n      queryType { name }\n      mutationType { name }\n      subscriptionType { name }\n      types {\n        ...FullType\n      }\n      directives {\n        name\n        description\n        locations\n        args {\n          ...InputValue\n        }\n      }\n    }\n  }\n\n  fragment FullType on __Type {\n    kind\n    name\n    description\n    fields(includeDeprecated: true) {\n      name\n      description\n      args {\n        ...InputValue\n      }\n      type {\n        ...TypeRef\n      }\n      isDeprecated\n      deprecationReason\n    }\n    inputFields {\n      ...InputValue\n    }\n    interfaces {\n      ...TypeRef\n    }\n    enumValues(includeDeprecated: true) {\n      name\n      description\n      isDeprecated\n      deprecationReason\n    }\n    possibleTypes {\n      ...TypeRef\n    }\n  }\n\n  fragment InputValue on __InputValue {\n    name\n    description\n    type { ...TypeRef }\n    defaultValue\n  }\n\n  fragment TypeRef on __Type {\n    kind\n    name\n    ofType {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"}}
+Completed 200 OK in 58ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/graphql" for 127.0.0.1 at 2018-09-12 13:44:32 -0400
+Processing by GraphqlController#execute as */*
+  Parameters: {"query"=>"query {\n  allSensorData {\n    temperature\n    humidity\n  }\n  allUsers {\n    fullName\n    email\n  }\n}", "variables"=>nil, "graphql"=>{"query"=>"query {\n  allSensorData {\n    temperature\n    humidity\n  }\n  allUsers {\n    fullName\n    email\n  }\n}", "variables"=>nil}}
+  [1m[36mSensorData Load (0.4ms)[0m  [1m[34mSELECT "sensor_data".* FROM "sensor_data"[0m
+  ↳ app/controllers/graphql_controller.rb:10
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/graphql_controller.rb:10
+Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 9.1ms)
+
+

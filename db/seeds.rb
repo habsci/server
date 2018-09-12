@@ -6,3 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create(full_name: 'Jeffrey', email: 'jeffgold12@gmail.com')
+SensorData.create(temperature: 5.5, humidity: 5.5)
