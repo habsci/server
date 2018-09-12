@@ -9,6 +9,7 @@ module Mutations
   
       def resolve(args)
         user_input = args[:user_input]
+
         user = User.create(
           full_name: user_input[:full_name],
           email: user_input[:email],
